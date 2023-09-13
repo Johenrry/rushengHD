@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.rusheng.mapper.PoetryMapper">
+  <resultMap id="BaseResultMap" type="com.example.rusheng.entity.Poetry">
+    <!--@mbg.generated-->
+    <!--@Table poetry-->
+    <id column="poetry_id" jdbcType="INTEGER" property="poetryId" />
+    <result column="poetry_title" jdbcType="VARCHAR" property="poetryTitle" />
+    <result column="poetry_content" jdbcType="VARCHAR" property="poetryContent" />
+    <result column="poetry_analyse" jdbcType="LONGVARCHAR" property="poetryAnalyse" />
+    <result column="poetry_cover" jdbcType="VARCHAR" property="poetryCover" />
+    <result column="poetry_background" jdbcType="LONGVARCHAR" property="poetryBackground" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    poetry_id, poetry_title, poetry_content, poetry_analyse, poetry_cover, poetry_background, 
+    role_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from poetry
+    where poetry_id = #{poetryId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from poetry
+    where poetry_id = #{poetryId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="poetry_id" keyProperty="poetryId" parameterType="com.example.rusheng.entity.Poetry" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into poetry (poetry_title, poetry_content, poetry_analyse, 
+      poetry_cover, poetry_background, role_id
+      )
+    values (#{poetryTitle,jdbcType=VARCHAR}, #{poetryContent,jdbcType=VARCHAR}, #{poetryAnalyse,jdbcType=LONGVARCHAR}, 
+      #{poetryCover,jdbcType=VARCHAR}, #{poetryBackground,jdbcType=LONGVARCHAR}, #{roleId,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.rusheng.entity.Poetry">
+    <!--@mbg.generated-->
+    update poetry
+    set poetry_title = #{poetryTitle,jdbcType=VARCHAR},
+      poetry_content = #{poetryContent,jdbcType=VARCHAR},
+      poetry_analyse = #{poetryAnalyse,jdbcType=LONGVARCHAR},
+      poetry_cover = #{poetryCover,jdbcType=VARCHAR},
+      poetry_background = #{poetryBackground,jdbcType=LONGVARCHAR},
+      role_id = #{roleId,jdbcType=INTEGER}
+    where poetry_id = #{poetryId,jdbcType=INTEGER}
+  </update>
+</mapper>

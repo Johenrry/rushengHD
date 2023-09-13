@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.rusheng.mapper.ScenicMapper">
+  <resultMap id="BaseResultMap" type="com.example.rusheng.entity.Scenic">
+    <!--@mbg.generated-->
+    <!--@Table scenic-->
+    <id column="scenic_id" jdbcType="INTEGER" property="scenicId" />
+    <result column="scenic_name" jdbcType="VARCHAR" property="scenicName" />
+    <result column="scenic_detail" jdbcType="LONGVARCHAR" property="scenicDetail" />
+    <result column="scenic_cover" jdbcType="VARCHAR" property="scenicCover" />
+    <result column="scenic_picture" jdbcType="LONGVARCHAR" property="scenicPicture" />
+    <result column="scenic_unity" jdbcType="VARCHAR" property="scenicUnity" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    scenic_id, scenic_name, scenic_detail, scenic_cover, scenic_picture, scenic_unity
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from scenic
+    where scenic_id = #{scenicId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from scenic
+    where scenic_id = #{scenicId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="scenic_id" keyProperty="scenicId" parameterType="com.example.rusheng.entity.Scenic" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into scenic (scenic_name, scenic_detail, scenic_cover, 
+      scenic_picture, scenic_unity)
+    values (#{scenicName,jdbcType=VARCHAR}, #{scenicDetail,jdbcType=LONGVARCHAR}, #{scenicCover,jdbcType=VARCHAR}, 
+      #{scenicPicture,jdbcType=LONGVARCHAR}, #{scenicUnity,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.rusheng.entity.Scenic">
+    <!--@mbg.generated-->
+    update scenic
+    set scenic_name = #{scenicName,jdbcType=VARCHAR},
+      scenic_detail = #{scenicDetail,jdbcType=LONGVARCHAR},
+      scenic_cover = #{scenicCover,jdbcType=VARCHAR},
+      scenic_picture = #{scenicPicture,jdbcType=LONGVARCHAR},
+      scenic_unity = #{scenicUnity,jdbcType=VARCHAR}
+    where scenic_id = #{scenicId,jdbcType=INTEGER}
+  </update>
+</mapper>

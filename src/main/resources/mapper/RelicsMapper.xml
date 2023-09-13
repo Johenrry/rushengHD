@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.rusheng.mapper.RelicsMapper">
+  <resultMap id="BaseResultMap" type="com.example.rusheng.entity.Relics">
+    <!--@mbg.generated-->
+    <!--@Table relics-->
+    <id column="relics_id" jdbcType="INTEGER" property="relicsId" />
+    <result column="relics_name" jdbcType="VARCHAR" property="relicsName" />
+    <result column="relics_detail" jdbcType="LONGVARCHAR" property="relicsDetail" />
+    <result column="relics_cover" jdbcType="VARCHAR" property="relicsCover" />
+    <result column="scenic_picture" jdbcType="LONGVARCHAR" property="scenicPicture" />
+    <result column="relics_unity" jdbcType="VARCHAR" property="relicsUnity" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    relics_id, relics_name, relics_detail, relics_cover, scenic_picture, relics_unity
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from relics
+    where relics_id = #{relicsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from relics
+    where relics_id = #{relicsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="relics_id" keyProperty="relicsId" parameterType="com.example.rusheng.entity.Relics" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into relics (relics_name, relics_detail, relics_cover, 
+      scenic_picture, relics_unity)
+    values (#{relicsName,jdbcType=VARCHAR}, #{relicsDetail,jdbcType=LONGVARCHAR}, #{relicsCover,jdbcType=VARCHAR}, 
+      #{scenicPicture,jdbcType=LONGVARCHAR}, #{relicsUnity,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.rusheng.entity.Relics">
+    <!--@mbg.generated-->
+    update relics
+    set relics_name = #{relicsName,jdbcType=VARCHAR},
+      relics_detail = #{relicsDetail,jdbcType=LONGVARCHAR},
+      relics_cover = #{relicsCover,jdbcType=VARCHAR},
+      scenic_picture = #{scenicPicture,jdbcType=LONGVARCHAR},
+      relics_unity = #{relicsUnity,jdbcType=VARCHAR}
+    where relics_id = #{relicsId,jdbcType=INTEGER}
+  </update>
+</mapper>

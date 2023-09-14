@@ -1,11 +1,9 @@
 package com.example.rusheng.service;
 
 import com.example.rusheng.entity.Role;
-    /**
-  * @Author: Henrry
-  * @Desctription: TODO
-  * @Date: Created in 2023/9/13 21:06
-  */
+
+import java.util.List;
+
 
 public interface RoleService{
 
@@ -18,4 +16,5 @@ public interface RoleService{
 
     int updateByPrimaryKey(Role record);
 
-}
+    List<Role> selectAllBy(Role role);
+    }

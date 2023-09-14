@@ -1,56 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.rusheng.mapper.RoleMapper">
-  <resultMap id="BaseResultMap" type="com.example.rusheng.entity.Role">
-    <!--@mbg.generated-->
-    <!--@Table `role`-->
-    <id column="role_id" jdbcType="INTEGER" property="roleId" />
-    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
-    <result column="role_dynasty" jdbcType="VARCHAR" property="roleDynasty" />
-    <result column="role_avatar" jdbcType="VARCHAR" property="roleAvatar" />
-    <result column="role_birth" jdbcType="TIMESTAMP" property="roleBirth" />
-    <result column="role_death" jdbcType="TIMESTAMP" property="roleDeath" />
-    <result column="role_identity" jdbcType="VARCHAR" property="roleIdentity" />
-    <result column="role_detail" jdbcType="LONGVARCHAR" property="roleDetail" />
-    <result column="role_biography" jdbcType="LONGVARCHAR" property="roleBiography" />
-  </resultMap>
+	<resultMap id="BaseResultMap" type="com.example.rusheng.entity.Role">
+		<!--@mbg.generated-->
+		<!--@Table `role`-->
+		<id column="role_id" jdbcType="INTEGER" property="roleId"/>
+    <result column="role_name" jdbcType="VARCHAR" property="roleName"/>
+    <result column="role_dynasty" jdbcType="VARCHAR" property="roleDynasty"/>
+    <result column="role_avatar" jdbcType="VARCHAR" property="roleAvatar"/>
+    <result column="role_birth" jdbcType="TIMESTAMP" property="roleBirth"/>
+    <result column="role_death" jdbcType="TIMESTAMP" property="roleDeath"/>
+    <result column="role_identity" jdbcType="VARCHAR" property="roleIdentity"/>
+    <result column="role_detail" jdbcType="LONGVARCHAR" property="roleDetail"/>
+    <result column="role_biography" jdbcType="LONGVARCHAR" property="roleBiography"/>
+	</resultMap>
   <sql id="Base_Column_List">
-    <!--@mbg.generated-->
-    role_id, role_name, role_dynasty, role_avatar, role_birth, role_death, role_identity, 
+	  <!--@mbg.generated-->
+	  role_id, role_name, role_dynasty, role_avatar, role_birth, role_death, role_identity,
     role_detail, role_biography
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated-->
-    select 
-    <include refid="Base_Column_List" />
-    from `role`
-    where role_id = #{roleId,jdbcType=INTEGER}
+	  <!--@mbg.generated-->
+	  select
+	  <include refid="Base_Column_List"/>
+	  from `role`
+	  where role_id = #{roleId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    <!--@mbg.generated-->
-    delete from `role`
-    where role_id = #{roleId,jdbcType=INTEGER}
+	  <!--@mbg.generated-->
+	  delete
+	  from `role`
+	  where role_id = #{roleId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="role_id" keyProperty="roleId" parameterType="com.example.rusheng.entity.Role" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into `role` (role_name, role_dynasty, role_avatar, 
-      role_birth, role_death, role_identity, 
-      role_detail, role_biography)
-    values (#{roleName,jdbcType=VARCHAR}, #{roleDynasty,jdbcType=VARCHAR}, #{roleAvatar,jdbcType=VARCHAR}, 
-      #{roleBirth,jdbcType=TIMESTAMP}, #{roleDeath,jdbcType=TIMESTAMP}, #{roleIdentity,jdbcType=VARCHAR}, 
-      #{roleDetail,jdbcType=LONGVARCHAR}, #{roleBiography,jdbcType=LONGVARCHAR})
+  <insert id="insert" keyColumn="role_id" keyProperty="roleId" parameterType="com.example.rusheng.entity.Role"
+          useGeneratedKeys="true">
+	  <!--@mbg.generated-->
+	  insert into `role` (role_name, role_dynasty, role_avatar,
+	                      role_birth, role_death, role_identity,
+	                      role_detail, role_biography)
+	  values (#{roleName,jdbcType=VARCHAR}, #{roleDynasty,jdbcType=VARCHAR}, #{roleAvatar,jdbcType=VARCHAR},
+	          #{roleBirth,jdbcType=TIMESTAMP}, #{roleDeath,jdbcType=TIMESTAMP}, #{roleIdentity,jdbcType=VARCHAR},
+	          #{roleDetail,jdbcType=LONGVARCHAR}, #{roleBiography,jdbcType=LONGVARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.example.rusheng.entity.Role">
-    <!--@mbg.generated-->
-    update `role`
-    set role_name = #{roleName,jdbcType=VARCHAR},
-      role_dynasty = #{roleDynasty,jdbcType=VARCHAR},
-      role_avatar = #{roleAvatar,jdbcType=VARCHAR},
-      role_birth = #{roleBirth,jdbcType=TIMESTAMP},
-      role_death = #{roleDeath,jdbcType=TIMESTAMP},
-      role_identity = #{roleIdentity,jdbcType=VARCHAR},
-      role_detail = #{roleDetail,jdbcType=LONGVARCHAR},
-      role_biography = #{roleBiography,jdbcType=LONGVARCHAR}
-    where role_id = #{roleId,jdbcType=INTEGER}
+	  <!--@mbg.generated-->
+	  update `role`
+	  set role_name      = #{roleName,jdbcType=VARCHAR},
+	      role_dynasty   = #{roleDynasty,jdbcType=VARCHAR},
+	      role_avatar    = #{roleAvatar,jdbcType=VARCHAR},
+	      role_birth     = #{roleBirth,jdbcType=TIMESTAMP},
+	      role_death     = #{roleDeath,jdbcType=TIMESTAMP},
+	      role_identity  = #{roleIdentity,jdbcType=VARCHAR},
+	      role_detail    = #{roleDetail,jdbcType=LONGVARCHAR},
+	      role_biography = #{roleBiography,jdbcType=LONGVARCHAR}
+	  where role_id = #{roleId,jdbcType=INTEGER}
   </update>
+
+	<!--  根据字段查-->
+	<!--auto generated by MybatisCodeHelper on 2023-09-14-->
+	<select id="selectByAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"/>
+		from `role`
+		<where>
+			<if test="roleId != null">
+				and role_id = #{roleId,jdbcType=INTEGER}
+			</if>
+			<if test="roleName != null">
+				and role_name = #{roleName,jdbcType=VARCHAR}
+			</if>
+			<if test="roleDynasty != null">
+				and role_dynasty = #{roleDynasty,jdbcType=VARCHAR}
+			</if>
+			<if test="roleAvatar != null">
+				and role_avatar = #{roleAvatar,jdbcType=VARCHAR}
+			</if>
+			<if test="roleBirth != null">
+				and role_birth = #{roleBirth,jdbcType=TIMESTAMP}
+			</if>
+			<if test="roleDeath != null">
+				and role_death = #{roleDeath,jdbcType=TIMESTAMP}
+			</if>
+			<if test="roleIdentity != null">
+				and role_identity = #{roleIdentity,jdbcType=VARCHAR}
+			</if>
+			<if test="roleDetail != null">
+				and role_detail = #{roleDetail,jdbcType=LONGVARCHAR}
+			</if>
+			<if test="roleBiography != null">
+				and role_biography = #{roleBiography,jdbcType=LONGVARCHAR}
+			</if>
+		</where>
+	</select>
 </mapper>

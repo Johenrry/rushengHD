@@ -5,11 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
-  * @Author: Henrry
-  * @Desctription: TODO
-  * @Date: Created in 2023/9/13 21:07
-  */
 
 @Data
 @AllArgsConstructor

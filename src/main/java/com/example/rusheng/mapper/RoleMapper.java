@@ -1,4 +1,7 @@
 package com.example.rusheng.mapper;
+import org.apache.ibatis.annotations.Param;
+import java.util.List;
+import java.util.Date;
 
 import com.example.rusheng.entity.Role;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,4 +21,9 @@ public interface RoleMapper {
     Role selectByPrimaryKey(Integer roleId);
 
     int updateByPrimaryKey(Role record);
+
+
+    List<Role> selectByAll(Role role);
+
+
 }

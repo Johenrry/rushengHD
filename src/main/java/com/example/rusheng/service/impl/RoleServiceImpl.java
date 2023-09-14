@@ -5,11 +5,9 @@ import javax.annotation.Resource;
 import com.example.rusheng.entity.Role;
 import com.example.rusheng.mapper.RoleMapper;
 import com.example.rusheng.service.RoleService;
-/**
-  * @Author: Henrry
-  * @Desctription: TODO
-  * @Date: Created in 2023/9/13 21:06
-  */
+
+import java.util.List;
+
 
 @Service
 public class RoleServiceImpl implements RoleService{
@@ -35,6 +33,11 @@ public class RoleServiceImpl implements RoleService{
     @Override
     public int updateByPrimaryKey(Role record) {
         return roleMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<Role> selectAllBy(Role role) {
+        return roleMapper.selectByAll(role);
     }
 
 }
